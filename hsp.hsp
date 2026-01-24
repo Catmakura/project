@@ -1,0 +1,31 @@
+screen  0,800,600 
+y=500 
+block=500 
+
+input
+
+repeat 
+redraw  0 
+
+stick  k 
+if  k=16  &  y=500  :  jump=20 
+y=y-jump 
+if  y>500  :  y=500 
+jump=jump-1 
+
+color  150,200,250 
+boxf 
+color  200,150,100 
+boxf  0,500,800,600 
+color  0,0,0 
+boxf  100,y,130,y-30 
+color  0,100,0 
+boxf  block,500,block+30,400 
+redraw  1
+
+if  70<=block  &  block<=130  &  y>400  :  stop
+block=block-10 
+if  block<-50  :  block=800
+
+await  16 
+loop 
